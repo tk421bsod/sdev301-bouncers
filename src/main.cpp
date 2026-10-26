@@ -38,9 +38,11 @@ class Bouncer {
 
         void update() {
             bn::fixed x = sprite.x();
+            bn::fixed y = sprite.y();
 
             // Update x position by adding speed
             x += x_speed;
+            y += y_speed;
 
             // If we've gone off the screen on the right
             if(x > MAX_X) {
@@ -54,8 +56,17 @@ class Bouncer {
                 x = MIN_X;
                 x_speed *= -1;
             }
+            if (y > MAX_Y) {
+                y = MAX_Y;
+                y_speed *= -1;
+            }
+            if (y < MIN_Y) {
+                y = MIN_Y;
+                y_speed *= -1;
+            }
 
             sprite.set_x(x);
+            sprite.set_y(y);
         }
     private:
 };
