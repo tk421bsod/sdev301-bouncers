@@ -9,6 +9,8 @@
 
 #include "bn_sprite_items_dot.h"
 
+static bn::random random;
+
 // Set max/min x position to be the edges of the display
 static constexpr int HALF_SCREEN_WIDTH = bn::display::width() / 2;
 static constexpr bn::fixed MIN_X = -HALF_SCREEN_WIDTH;
@@ -18,8 +20,9 @@ static constexpr int HALF_SCREEN_HEIGHT = bn::display::height() / 2;
 static constexpr bn::fixed MIN_Y = -HALF_SCREEN_HEIGHT;
 static constexpr bn::fixed MAX_Y = HALF_SCREEN_HEIGHT;
 
-// Starting speed of a bouncer
-static constexpr bn::fixed BASE_SPEED = 2;
+// Bouncer speed limits
+static constexpr int MIN_SPEED = 1;
+static constexpr int MAX_SPEED = 5;
 
 // Maximum number of bouncers on screen at once
 static constexpr int MAX_BOUNCERS = 20;
@@ -32,7 +35,7 @@ class Bouncer {
         bn::fixed x_speed;
         bn::fixed y_speed;
 
-        Bouncer(bn::fixed x_start, bn::fixed y_start) : sprite(bn::sprite_items::dot.create_sprite(x_start, y_start)), x_speed(BASE_SPEED), y_speed(BASE_SPEED) {
+        Bouncer(bn::fixed x_start, bn::fixed y_start) : sprite(bn::sprite_items::dot.create_sprite(x_start, y_start)), x_speed(random.get_int(MIN_SPEED, MAX_SPEED)), y_speed(random.get_int(MIN_SPEED, MAX_SPEED)) {
 
         }
 
