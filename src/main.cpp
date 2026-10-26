@@ -59,19 +59,19 @@ class Bouncer {
     private:
 };
 
-bn::fixed average_x(bn::vector<bn::sprite_ptr, MAX_BOUNCERS>& sprites){
+bn::fixed average_x(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers){
      // Add all x positions together
     bn::fixed x_sum = 0;
-    for(bn::sprite_ptr sprite : sprites) {
-        x_sum += sprite.x();
+    for(Bouncer bouncer : bouncers) {
+        x_sum += bouncer.sprite.x();
     }
 
     bn::fixed x_average = x_sum;
 
     // Only divide if we have 1 or more
     // Prevents division by 0
-    if(sprites.size() > 0) {
-        x_average /= sprites.size();
+    if(bouncers.size() > 0) {
+        x_average /= bouncers.size();
     }
 
     return x_average;
@@ -87,22 +87,19 @@ void add_bouncer(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers, bn::fixed start_x,
 int main() {
     bn::core::init();
 
-    // Sprites and x speeds of bouncers
-    // Items with the same index correspond to each other
+    // All bouncers that currently exist
     bn::vector<Bouncer, MAX_BOUNCERS> bouncers = {};
 
     while(true) {
         // if A is pressed add a new bouncer
-        
         if(bn::keypad::a_pressed()) {
             add_bouncer(bouncers, 20, y_spawn);
         }
 
-        /*
         // if B is pressed print the average to the console
         if(bn::keypad::b_pressed()) {
-            BN_LOG("Average x: ", average_x(sprites));
-        } */
+            BN_LOG("Average x: ", average_x(bouncers));
+        }
 
         for (Bouncer& b : bouncers) {
             b.update();
