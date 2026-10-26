@@ -44,15 +44,13 @@ class Bouncer {
             x += x_speed;
             y += y_speed;
 
-            // If we've gone off the screen on the right
+            // If we've gone off the screen
             if(x > MAX_X) {
                 // Snap back to screen and reverse direction
                 x = MAX_X;
-                x_speed *=-1;
+                x_speed *= -1;
             }
-            // If we've gone off the screen on the left
-            if(x < MIN_X) {
-                // Snap back to screen and reverse direction
+            if (x < MIN_X) {
                 x = MIN_X;
                 x_speed *= -1;
             }
