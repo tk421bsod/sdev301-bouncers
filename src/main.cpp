@@ -125,7 +125,7 @@ int main() {
 
         // if B is pressed print the average to the console
         if(bn::keypad::b_pressed()) {
-            BN_LOG("Average x: ", average(bouncers).x());
+            BN_LOG("Average x: ", current_average.x());
         }
 
         for (Bouncer& b : bouncers) {
