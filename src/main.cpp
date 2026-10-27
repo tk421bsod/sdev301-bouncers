@@ -126,7 +126,9 @@ int main() {
 
         // if B is pressed delete the most recent bouncer added
         if(bn::keypad::b_pressed()) {
-            bouncers.pop_back();
+            if (bouncers.size() > 0){
+                bouncers.pop_back();
+            }
         }
 
         for (Bouncer& b : bouncers) {
