@@ -124,9 +124,9 @@ int main() {
             add_bouncer(bouncers, 20, y_spawn);
         }
 
-        // if B is pressed print the average to the console
+        // if B is pressed delete the most recent bouncer added
         if(bn::keypad::b_pressed()) {
-            BN_LOG("Average x: ", current_average.x());
+            bouncers.pop_back();
         }
 
         for (Bouncer& b : bouncers) {
