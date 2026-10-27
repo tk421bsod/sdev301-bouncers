@@ -74,7 +74,7 @@ class Bouncer {
 };
 
 // Return the average of all Bouncers' coordinates as a point
-bn::fixed_point average(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers){
+bn::fixed_point get_average_position(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers){
      // Add all x positions together
     bn::fixed x_sum = 0;
     bn::fixed y_sum = 0;
@@ -115,7 +115,7 @@ int main() {
     bn::sprite_ptr average_indicator = bn::sprite_items::dot.create_sprite(current_average);
 
     while(true) {
-        current_average = average(bouncers);
+        current_average = get_average_position(bouncers);
         average_indicator.set_position(current_average);
 
         // if A is pressed add a new bouncer
