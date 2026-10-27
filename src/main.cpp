@@ -109,8 +109,15 @@ int main() {
 
     // All bouncers that currently exist
     bn::vector<Bouncer, MAX_BOUNCERS> bouncers = {};
+    // Current average bouncer coordinates
+    bn::fixed_point current_average = bn::fixed_point(0, 0);
+    // Dot sprite indicating average bouncer position
+    bn::sprite_ptr average_indicator = bn::sprite_items::dot.create_sprite(current_average);
 
     while(true) {
+        current_average = average(bouncers);
+        average_indicator.set_position(current_average);
+
         // if A is pressed add a new bouncer
         if(bn::keypad::a_pressed()) {
             add_bouncer(bouncers, 20, y_spawn);
