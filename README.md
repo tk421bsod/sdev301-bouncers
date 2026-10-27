@@ -2,6 +2,8 @@
 Little squares bouncing around your GBA's screen, made using Butano.
 A yellow dot follows the average position of the squares.
 
+![Sample recording of game](./bouncers.gif)
+
 ## Controls
 - **A** - Add a square, up to 20
 - **B** - Remove a square
