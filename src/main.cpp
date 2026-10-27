@@ -94,7 +94,7 @@ bn::fixed_point average(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers){
         y_average /= size;
     }
 
-    return bn::fixed_point_t(x_average, y_average);
+    return bn::fixed_point(x_average, y_average);
 }
 
 void add_bouncer(bn::vector<Bouncer, MAX_BOUNCERS>& bouncers, bn::fixed start_x, bn::fixed start_y){
