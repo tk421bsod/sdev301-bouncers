@@ -9,6 +9,7 @@
 #include <bn_log.h>
 
 #include "bn_sprite_items_dot.h"
+#include "bn_sprite_items_square.h"
 
 static bn::random random;
 
@@ -36,7 +37,7 @@ class Bouncer {
         bn::fixed x_speed;
         bn::fixed y_speed;
 
-        Bouncer(bn::fixed x_start, bn::fixed y_start) : sprite(bn::sprite_items::dot.create_sprite(x_start, y_start)), x_speed(random.get_int(MIN_SPEED, MAX_SPEED)), y_speed(random.get_int(MIN_SPEED, MAX_SPEED)) {
+        Bouncer(bn::fixed x_start, bn::fixed y_start) : sprite(bn::sprite_items::square.create_sprite(x_start, y_start)), x_speed(random.get_int(MIN_SPEED, MAX_SPEED)), y_speed(random.get_int(MIN_SPEED, MAX_SPEED)) {
 
         }
 
